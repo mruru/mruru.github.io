@@ -1,6 +1,12 @@
 {
     "title":"Mruru",
     "subTitle":"起名儿耽误事",
+    "homeUrl":"https://pages.mruru.cn",
     "avatarUrl":"https://github.githubassets.com/favicons/favicon.svg",
+    "email":"me@mruru.cn",
+    "i18n":"CN",
+    "UTC":8,
+    "themeMode":"manual",
+    "dayTheme":"light",
     "GMEEK_VERSION":"last"
 }
