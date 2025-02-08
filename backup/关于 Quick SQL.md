@@ -163,7 +163,7 @@ view [view_name] [table name] [table name]...
 
 
 | **产品销售** 定义包含 PRODUCTS、CUSTOMERS、CHANNELS、PROMOTIONS 和 SALES 表的星形方案。SALES 表具有对其他表的外键引用。标识数字列 (NUM)。为两列定义合法值 (/CHECK)。为所有表生成随机示例数据 (/INSERT)，并添加包含所有表的 SALES_V 联接视图。 | [加载模型](https://apex.oracle.com/pls/apex/#) |
-| ------------------------------------------------------------ | ---------------------------------------------- |
+| ----------------------------------------------- | --------------------------------------------------------- |
 | **员工技能** 包括 DEPARTMENTS、EMPLOYEES 和 SKILLS 表，并使用缩进来标识父表和子表。指定 SQL 数据类型 (VC255)。生成十行随机数据 (/INSERT) 并提供示例值 (/VALUES)。定义使用检查约束条件的合法值 (/CHECK)。说明如何在方括号中添加列注释。 | [加载模型](https://apex.oracle.com/pls/apex/#) |
 | **待办事项** 包括 ASSIGNEES 和 TODOS 表。定义 NOT NULL 约束条件 (/NN)。指定合法值 (/CHECK)。生成示例数据 (/INSERT)。添加审计列 (#auditcols: true)。启用创建定制待办事项系统（分钟）。 | [加载模型](https://apex.oracle.com/pls/apex/#) |
 | **部门和员工** 包括 DEPARTMENTS 和 EMPLOYEES 表以及额外的 EMP_V 联接视图。生成随机数据 (/INSERT)。添加 NOT NULL 约束条件 (/NN)。使用缩进列表定义表、列和子表。说明如何自动添加主键列和外键列。 | [加载模型](https://apex.oracle.com/pls/apex/#) |
