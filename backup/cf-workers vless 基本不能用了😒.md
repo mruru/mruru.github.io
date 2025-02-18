@@ -7,7 +7,8 @@
 cf workers 指标日志显示出现大量的cpu超时警告。
 看来无法再正常使用了，只能应急了。
 
-![Image](https://github.com/user-attachments/assets/9ae11663-dab9-4208-abc0-58498d7e7807)
+
+![Image](https://github.com/user-attachments/assets/753ee7e0-063a-45ba-bc82-37b8fb82e945)
 
 各位大佬的脚本都测试过了，结果都一样。
 
