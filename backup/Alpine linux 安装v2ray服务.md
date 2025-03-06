@@ -29,3 +29,52 @@ service v2ray restart #重启v2ray服务
 ![Image](https://github.com/user-attachments/assets/aa2f6924-a558-4b9d-a12b-40dca9e8123c)
 
 速度一般啊，1920x1080@60fps还算流畅，将就用吧……
+
+
+### 配置ws
+
+服务器端config.json
+
+```sh
+{
+  "inbound": {
+    "port": 10086,
+    "listen":"127.0.0.1",//只监听 127.0.0.1，避免除本机外的机器探测到开放了 10000 端口
+    "protocol": "vmess",
+    "settings": {
+      "clients": [
+        {
+          "id": "b831381d-6324-4d53-ad4f-8cda48b30811",
+          "alterId": 64
+        }
+      ]
+    },
+    "streamSettings": {
+      "network": "ws",
+      "wsSettings": {
+      "path": "/ray"
+      }
+    }
+  },
+  "outbound": {
+    "protocol": "freedom",
+    "settings": {}
+  }
+}
+```
+
+caddy配置，因为 Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证书、密钥。
+
+
+```sh
+mydomain.me
+{
+  log ./caddy.log
+  proxy /ray localhost:10086 {
+    websocket
+    header_upstream -Origin
+  }
+}
+```
+
+但是Oracle云似乎限制了web端口的速度。所以暂时使用tcp模式

@@ -106,7 +106,44 @@ service v2ray restart <span class="pl-c"><span class="pl-c">#</span>重启v2ray�
 <p>按照如上步骤就安装完毕了。我使用的是v2rayN为客户端。配置信息在上述config.json内都能找到。</p>
 <p>测试YouTube速度</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/aa2f6924-a558-4b9d-a12b-40dca9e8123c"><img src="https://github.com/user-attachments/assets/aa2f6924-a558-4b9d-a12b-40dca9e8123c" alt="Image" style="max-width: 100%;"></a></p>
-<p>速度一般啊，1920x1080@60fps还算流畅，将就用吧……</p></div>
+<p>速度一般啊，1920x1080@60fps还算流畅，将就用吧……</p>
+<h3>配置ws</h3>
+<p>服务器端config.json</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">{
+  <span class="pl-s"><span class="pl-pds">"</span>inbound<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>port<span class="pl-pds">"</span></span>: 10086,
+    <span class="pl-s"><span class="pl-pds">"</span>listen<span class="pl-pds">"</span></span>:<span class="pl-s"><span class="pl-pds">"</span>127.0.0.1<span class="pl-pds">"</span></span>,//只监听 127.0.0.1，避免除本机外的机器探测到开放了 10000 端口
+    <span class="pl-s"><span class="pl-pds">"</span>protocol<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>vmess<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>settings<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>clients<span class="pl-pds">"</span></span>: [
+        {
+          <span class="pl-s"><span class="pl-pds">"</span>id<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>b831381d-6324-4d53-ad4f-8cda48b30811<span class="pl-pds">"</span></span>,
+          <span class="pl-s"><span class="pl-pds">"</span>alterId<span class="pl-pds">"</span></span>: 64
+        }
+      ]
+    },
+    <span class="pl-s"><span class="pl-pds">"</span>streamSettings<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>network<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>ws<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>wsSettings<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>path<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>/ray<span class="pl-pds">"</span></span>
+      }
+    }
+  },
+  <span class="pl-s"><span class="pl-pds">"</span>outbound<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>protocol<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>freedom<span class="pl-pds">"</span></span>,
+    <span class="pl-s"><span class="pl-pds">"</span>settings<span class="pl-pds">"</span></span>: {}
+  }
+}</pre></div>
+<p>caddy配置，因为 Caddy 会自动申请证书并自动更新，所以使用 Caddy 不用指定证书、密钥。</p>
+<div class="highlight highlight-source-shell"><pre class="notranslate">mydomain.me
+{
+  log ./caddy.log
+  proxy /ray localhost:10086 {
+    websocket
+    header_upstream -Origin
+  }
+}</pre></div>
+<p>但是Oracle云似乎限制了web端口的速度。所以暂时使用tcp模式</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
