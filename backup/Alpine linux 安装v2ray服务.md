@@ -13,7 +13,7 @@ Alpine linux 安装v2ray服务
 安装步骤
 
 ```sh
-apk update #更新软件园
+apk update #更新软件源
 apk add v2ray #安装v2ray服务
 rc-update add v2ray #rc管理启动，添加v2ray的开机启动
 mv /etc/v2ray/config.json config.json.bak #备份一下默认配置文件。非必要
@@ -22,10 +22,10 @@ cat /etc/v2ray/config.json #查看配置文件关键信息，主要为uuid和por
 service v2ray restart #重启v2ray服务
 ```
 
-按照如上步骤就安装完毕了。我使用的是v2rayN为客户端。配置信息在config.json内都能找到。
+按照如上步骤就安装完毕了。我使用的是v2rayN为客户端。配置信息在上述config.json内都能找到。
 
 测试YouTube速度
 
 ![Image](https://github.com/user-attachments/assets/aa2f6924-a558-4b9d-a12b-40dca9e8123c)
 
-速度真差啊，将就用吧……
+速度一般啊，1080@60fps还算流畅，将就用吧……

@@ -96,17 +96,17 @@ body{box-sizing: border-box;min-width: 200px;max-width: 900px;margin: 20px auto;
 <h3>安装方法</h3>
 <p>由于机器内存比较小。我安装的alpine-3.12版本 linux。</p>
 <p>安装步骤</p>
-<div class="highlight highlight-source-shell"><pre class="notranslate">apk update <span class="pl-c"><span class="pl-c">#</span>更新软件园</span>
+<div class="highlight highlight-source-shell"><pre class="notranslate">apk update <span class="pl-c"><span class="pl-c">#</span>更新软件源</span>
 apk add v2ray <span class="pl-c"><span class="pl-c">#</span>安装v2ray服务</span>
 rc-update add v2ray <span class="pl-c"><span class="pl-c">#</span>rc管理启动，添加v2ray的开机启动</span>
 mv /etc/v2ray/config.json config.json.bak <span class="pl-c"><span class="pl-c">#</span>备份一下默认配置文件。非必要</span>
 mv /etc/v2ray/vpoint_vmess_freedom.json config.json <span class="pl-c"><span class="pl-c">#</span>更改vponit-vmess为默认配置</span>
 cat /etc/v2ray/config.json <span class="pl-c"><span class="pl-c">#</span>查看配置文件关键信息，主要为uuid和port</span>
 service v2ray restart <span class="pl-c"><span class="pl-c">#</span>重启v2ray服务</span></pre></div>
-<p>按照如上步骤就安装完毕了。我使用的是v2rayN为客户端。配置信息在config.json内都能找到。</p>
+<p>按照如上步骤就安装完毕了。我使用的是v2rayN为客户端。配置信息在上述config.json内都能找到。</p>
 <p>测试YouTube速度</p>
 <p><a target="_blank" rel="noopener noreferrer" href="https://github.com/user-attachments/assets/aa2f6924-a558-4b9d-a12b-40dca9e8123c"><img src="https://github.com/user-attachments/assets/aa2f6924-a558-4b9d-a12b-40dca9e8123c" alt="Image" style="max-width: 100%;"></a></p>
-<p>速度真差啊，将就用吧……</p></div>
+<p>速度一般啊，1080@60fps还算流畅，将就用吧……</p></div>
 <div style="font-size:small;margin-top:8px;float:right;"></div>
 
 <button class="btn btn-block" type="button" onclick="openComments()" id="cmButton">评论</button>
